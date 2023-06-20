@@ -1,36 +1,63 @@
 from django.db import models
 
+class Usuario:
+    def __init__(self, nombre, correo):
+        self.Nombre = nombre
+        self.Favoritos = []
+        self.Correo = correo
 
-class Producto(models.Model):
-    idProducto = models.BigIntegerField(primary_key=True)
-    marca = models.CharField(max_length=120)
-    precioUnitario = models.IntegerField()
+    def agregarFavoritos(self, favorito):
+        pass
 
-    class Meta:
-        abstract = True
-
-
-class Mouse(Producto):
-    wireless = models.BooleanField()
-
-    def __str__(self):
-        return self.idProducto + " - Mouse"
+    def realizarComentario(self, comentario):
+        pass
 
 
-class Monitor(Producto):
-    resolucion = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.idProducto + "  - Monitor"
 
 
-class Computador(Producto):
-    cpu = models.CharField(max_length=5)
-    ram = models.IntegerField()
-    hdd = models.IntegerField()
 
-    def __str__(self):
-        return self.idProducto + "  - Computador"
+class Administrador:
+    def __init__(self, nombre, correo):
+        self.Nombre = nombre
+        self.Favoritos = []
+        self.Correo = correo
+
+    def agregarFavoritos(self, favorito):
+        pass
+
+    def realizarComentario(self, comentario):
+        pass
+
+    def editarPagina(self):
+        pass
+
+    def borrarComentario(self, comentario):
+        pass
+
+    def crearDemostracion(self, demostracion):
+        pass
+
+    def borrarDemostracion(self, demostracion):
+        pass
+
+
+
+class Demostracion:
+    def __init__(self, titulo, explicacion):
+        self.Titulo = titulo
+        self.Explicacion = explicacion
+        self.Comentarios = []
+
+    def realizarComentario(self, comentario):
+        self.Comentarios.append(comentario)
+
+
+
+class Comentario:
+    def __init__(self, texto, usuario, id_comentario):
+        self.Texto = texto
+        self.Usuario = usuario
+        self.IDcoment = id_comentario
 
 
 class Cliente(models.Model):
